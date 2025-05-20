@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rout Automobiles Garage</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f4f4f4;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #20232a;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 100px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+
+    .services, .location, .booking {
+      padding: 30px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .services h2, .location h2, .booking h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+      color: #20232a;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .service-card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .service-card h3 {
+      margin: 15px 0 10px;
+    }
+
+    .service-card p {
+      font-size: 14px;
+    }
+
+    .learn-more {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 15px;
+      background: #20232a;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .learn-more:hover {
+      background: #444;
+    }
+
+    .learn-more-section {
+      display: none;
+      background: #fff;
+      margin: 30px auto;
+      padding: 20px;
+      max-width: 1000px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .location p, .location a {
+      text-align: center;
+      font-size: 16px;
+    }
+
+    .booking form {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: auto;
+    }
+
+    .booking label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .booking input, .booking textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .booking button {
+      background-color: #20232a;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .booking button:hover {
+      background-color: #444;
+    }
+
+    footer {
+      background: #20232a;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .service-card img {
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="ChatGPT Image May 2, 2025, 11_58_23 AM.png" alt="Rout Garage Logo" class="logo">
+    <h1>Rout Automobiles Garage</h1>
+    <p>Owned by Ramesh Rout | Emergency Contact: <a href="tel:+919777954478" style="color: #61dafb;">9777954478</a></p>
+  </header>
+
+  <section class="services">
+    <h2>Our Services</h2>
+    <div class="service-grid">
+      <div class="service-card">
+        <img src="https://road-mech24.com/addedimage/carservicepage3.jpg" alt="Car Repair">
+        <h3>Repair Services</h3>
+        <p>Complete mechanical and electrical repairs for all car models.</p>
+        <a href="#" class="learn-more" onclick="showLearnMore('repair')">Learn More</a>
+      </div>
+      <div class="service-card">
+        <img src="./images.jpeg" alt="Welding">
+        <h3>Welding Services</h3>
+        <p>Chassis welding, body welding, MIG/TIG work with safety and precision.</p>
+        <a href="#" class="learn-more" onclick="showLearnMore('welding')">Learn More</a>
+      </div>
+      <div class="service-card">
+        <img src="./painting.jpg" alt="Color & Denting">
+        <h3>Color & Denting</h3>
+        <p>Get flawless car painting and dent removal with modern equipment.</p>
+        <a href="#" class="learn-more" onclick="showLearnMore('color')">Learn More</a>
+      </div>
+      <div class="service-card">
+        <img src="./car-polishing-service-500x500.webp" alt="Polish">
+        <h3>Car Polish</h3>
+        <p>Premium polishing to make your vehicle shine like new.</p>
+        <a href="#" class="learn-more" onclick="showLearnMore('polish')">Learn More</a>
+      </div>
+      <div class="service-card">
+        <img src="./images (1).jpeg" alt="Car Modification">
+        <h3>Car Modification</h3>
+        <p>Personalize your car with modern upgrades and stylish modifications.</p>
+        <a href="#" class="learn-more" onclick="showLearnMore('modify')">Learn More</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="learn-more-section" id="learnMoreSection">
+    <div id="repair" style="display:none">
+      <h2>Detailed Repair Services</h2>
+      <p>We cover all types of mechanical and electrical car repairs, including engine work, brakes, suspension, batteries, air conditioning, and more. Our skilled mechanics ensure reliable service with genuine parts.</p>
+    </div>
+    <div id="welding" style="display:none">
+      <h2>Detailed Welding Services</h2>
+      <p>We offer expert welding services including MIG, TIG, and spot welding for car frames, doors, and chassis. High-quality materials and skilled welders ensure strong, safe, and clean welds for long-term durability.</p>
+    </div>
+    <div id="color" style="display:none">
+      <h2>Color & Denting Details</h2>
+      <p>We use high-quality automotive paint and computerized matching for a perfect finish. Our dent removal is precise, with tools that restore your car’s shape without damage to the paint or frame.</p>
+    </div>
+    <div id="polish" style="display:none">
+      <h2>Polishing Services</h2>
+      <p>Restore your car's shine with premium polish, wax, and ceramic coating options. Removes light scratches, oxidation, and dullness to keep your vehicle looking showroom new.</p>
+    </div>
+    <div id="modify" style="display:none">
+      <h2>Car Modification Services</h2>
+      <p>We specialize in custom car modification, including body kits, alloy wheels, LED lighting, interior upgrades, infotainment systems, and performance tuning. Whether you want a sporty look or luxury comfort, we tailor modifications to your style and budget.</p>
+    </div>
+  </section>
+
+  <section class="booking">
+    <h2>Book Car Service</h2>
+    <form id="bookingForm">
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" required>
+
+      <label for="phone">Phone Number:</label>
+      <input type="tel" id="phone" required>
+
+      <label for="message">Service Details:</label>
+      <textarea id="message" rows="4" required></textarea>
+
+      <button type="submit">Send via WhatsApp</button>
+    </form>
+  </section>
+
+  <section class="location">
+    <h2>Visit Us</h2>
+    <p><a href="https://maps.app.goo.gl/c6znqCEtr3UDYyQo8" target="_blank">View on Google Maps</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Rout Automobiles Garage | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const phone = document.getElementById('phone').value;
+      const message = document.getElementById('message').value;
+
+      const whatsappURL = `https://wa.me/919777954478?text=Hello%2C%20I%20am%20${encodeURIComponent(name)}%20(${encodeURIComponent(phone)}).%20I%20want%20car%20service%3A%20${encodeURIComponent(message)}`;
+
+      window.open(whatsappURL, '_blank');
+    });
+
+    function showLearnMore(serviceId) {
+      const sections = ['repair', 'welding', 'color', 'polish', 'modify'];
+      sections.forEach(id => document.getElementById(id).style.display = 'none');
+      document.getElementById(serviceId).style.display = 'block';
+      document.getElementById('learnMoreSection').style.display = 'block';
+      document.getElementById('learnMoreSection').scrollIntoView({ behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
