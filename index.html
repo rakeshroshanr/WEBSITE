@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rout Automobiles Garage</title>
-  <link rel="stylesheet" href="styles.css">
   <style>
     * {
       margin: 0;
@@ -19,6 +18,12 @@
       line-height: 1.6;
     }
 
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
     header {
       background: #20232a;
       color: white;
@@ -30,6 +35,27 @@
       width: 100px;
       height: auto;
       margin-bottom: 10px;
+    }
+
+    .slider {
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    /*.slider img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+*/
+    .slider img.active {
+      opacity: 1;
     }
 
     .services, .location, .booking {
@@ -74,19 +100,31 @@
       font-size: 14px;
     }
 
-    .learn-more {
+    .animated-btn {
       display: inline-block;
       margin-top: 10px;
-      padding: 8px 15px;
-      background: #20232a;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 25px;
+      background: linear-gradient(45deg, red, blue, green, orange);
       color: white;
       text-decoration: none;
-      border-radius: 5px;
-      transition: background 0.3s;
+      font-weight: bold;
+      animation: glow 2s infinite linear;
+      cursor: pointer;
+      transition: opacity 0.3s;
     }
 
-    .learn-more:hover {
-      background: #444;
+    .animated-btn:hover {
+      opacity: 0.8;
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 10px red; }
+      25% { box-shadow: 0 0 10px blue; }
+      50% { box-shadow: 0 0 10px green; }
+      75% { box-shadow: 0 0 10px orange; }
+      100% { box-shadow: 0 0 10px red; }
     }
 
     .learn-more-section {
@@ -97,6 +135,10 @@
       max-width: 1000px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    .location a::before {
+      content: "\1F4CD ";
     }
 
     .location p, .location a {
@@ -128,16 +170,23 @@
     }
 
     .booking button {
-      background-color: #20232a;
-      color: white;
-      padding: 10px 15px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
+      width: 100%;
+      font-size: 16px;
     }
 
-    .booking button:hover {
-      background-color: #444;
+    #scrollBtn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: linear-gradient(45deg, red, blue, green, orange);
+      color: #fff;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 18px;
+      z-index: 999;
+      animation: glow 2s infinite linear;
     }
 
     footer {
@@ -156,12 +205,35 @@
   </style>
 </head>
 <body>
+
+
   <header>
     <img src="ChatGPT Image May 2, 2025, 11_58_23 AM.png" alt="Rout Garage Logo" class="logo">
     <h1>Rout Automobiles Garage</h1>
     <p>Owned by Ramesh Rout | Emergency Contact: <a href="tel:+919777954478" style="color: #61dafb;">9777954478</a></p>
   </header>
+<!-- Video Banner Above Header -->
+ <!-- VIDEO CONTAINER WITH ALTERNATING VIDEOS -->
+<div id="videoContainer">
+  <video id="video1" autoplay muted playsinline>
+    <source src="Red and black Modern Car Repair Banner.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <video id="video2" muted playsinline style="display: none;">
+    <source src="./Red and Black Modern Car Service Poster.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+</div>
 
+ <!--
+  <div class="slider">
+    <img src="https://road-mech24.com/addedimage/carservicepage3.jpg" class="active">
+    <img src="./painting.jpg">
+    <img src="./car-polishing-service-500x500.webp">
+    <img src="./images.jpeg">
+    <img src="./images (1).jpeg">
+  </div>
+-->
   <section class="services">
     <h2>Our Services</h2>
     <div class="service-grid">
@@ -169,31 +241,31 @@
         <img src="https://road-mech24.com/addedimage/carservicepage3.jpg" alt="Car Repair">
         <h3>Repair Services</h3>
         <p>Complete mechanical and electrical repairs for all car models.</p>
-        <a href="#" class="learn-more" onclick="showLearnMore('repair')">Learn More</a>
+        <a href="#" class="animated-btn" onclick="showLearnMore('repair')">Learn More</a>
       </div>
       <div class="service-card">
         <img src="./images.jpeg" alt="Welding">
         <h3>Welding Services</h3>
         <p>Chassis welding, body welding, MIG/TIG work with safety and precision.</p>
-        <a href="#" class="learn-more" onclick="showLearnMore('welding')">Learn More</a>
+        <a href="#" class="animated-btn" onclick="showLearnMore('welding')">Learn More</a>
       </div>
       <div class="service-card">
         <img src="./painting.jpg" alt="Color & Denting">
         <h3>Color & Denting</h3>
         <p>Get flawless car painting and dent removal with modern equipment.</p>
-        <a href="#" class="learn-more" onclick="showLearnMore('color')">Learn More</a>
+        <a href="#" class="animated-btn" onclick="showLearnMore('color')">Learn More</a>
       </div>
       <div class="service-card">
         <img src="./car-polishing-service-500x500.webp" alt="Polish">
         <h3>Car Polish</h3>
         <p>Premium polishing to make your vehicle shine like new.</p>
-        <a href="#" class="learn-more" onclick="showLearnMore('polish')">Learn More</a>
+        <a href="#" class="animated-btn" onclick="showLearnMore('polish')">Learn More</a>
       </div>
       <div class="service-card">
         <img src="./images (1).jpeg" alt="Car Modification">
         <h3>Car Modification</h3>
         <p>Personalize your car with modern upgrades and stylish modifications.</p>
-        <a href="#" class="learn-more" onclick="showLearnMore('modify')">Learn More</a>
+        <a href="#" class="animated-btn" onclick="showLearnMore('modify')">Learn More</a>
       </div>
     </div>
   </section>
@@ -201,23 +273,23 @@
   <section class="learn-more-section" id="learnMoreSection">
     <div id="repair" style="display:none">
       <h2>Detailed Repair Services</h2>
-      <p>We cover all types of mechanical and electrical car repairs, including engine work, brakes, suspension, batteries, air conditioning, and more. Our skilled mechanics ensure reliable service with genuine parts.</p>
+      <p>We cover all types of mechanical and electrical car repairs, including engine work, brakes, suspension, batteries, air conditioning, and more.</p>
     </div>
     <div id="welding" style="display:none">
       <h2>Detailed Welding Services</h2>
-      <p>We offer expert welding services including MIG, TIG, and spot welding for car frames, doors, and chassis. High-quality materials and skilled welders ensure strong, safe, and clean welds for long-term durability.</p>
+      <p>MIG, TIG, spot welding for car frames, doors, and chassis. Safe and durable welding.</p>
     </div>
     <div id="color" style="display:none">
       <h2>Color & Denting Details</h2>
-      <p>We use high-quality automotive paint and computerized matching for a perfect finish. Our dent removal is precise, with tools that restore your car’s shape without damage to the paint or frame.</p>
+      <p>Perfect finish with computerized paint matching and dent removal tools.</p>
     </div>
     <div id="polish" style="display:none">
       <h2>Polishing Services</h2>
-      <p>Restore your car's shine with premium polish, wax, and ceramic coating options. Removes light scratches, oxidation, and dullness to keep your vehicle looking showroom new.</p>
+      <p>Premium polish, wax, and ceramic coating to restore shine and remove scratches.</p>
     </div>
     <div id="modify" style="display:none">
       <h2>Car Modification Services</h2>
-      <p>We specialize in custom car modification, including body kits, alloy wheels, LED lighting, interior upgrades, infotainment systems, and performance tuning. Whether you want a sporty look or luxury comfort, we tailor modifications to your style and budget.</p>
+      <p>Custom mods like body kits, lights, infotainment, alloy wheels, and performance tuning.</p>
     </div>
   </section>
 
@@ -233,7 +305,7 @@
       <label for="message">Service Details:</label>
       <textarea id="message" rows="4" required></textarea>
 
-      <button type="submit">Send via WhatsApp</button>
+      <button type="submit" class="animated-btn">Send via WhatsApp</button>
     </form>
   </section>
 
@@ -246,7 +318,63 @@
     <p>&copy; 2025 Rout Automobiles Garage | All Rights Reserved</p>
   </footer>
 
+  <button id="scrollBtn" onclick="scrollToTop()">↑</button>
+
   <script>
+
+   
+  // Scroll-to-top button toggle
+  const scrollBtn = document.getElementById("scrollBtn");
+  window.addEventListener("scroll", () => {
+    scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+  });
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // WhatsApp Booking Form Submission
+  document.getElementById('bookingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const message = document.getElementById('message').value;
+
+    const whatsappURL = `https://wa.me/919777954478?text=Hello%2C%20I%20am%20${encodeURIComponent(name)}%20(${encodeURIComponent(phone)}).%20I%20want%20car%20service%3A%20${encodeURIComponent(message)}`;
+
+    window.open(whatsappURL, '_blank');
+  });
+
+  // Learn More Section Display
+  function showLearnMore(serviceId) {
+    const sections = ['repair', 'welding', 'color', 'polish', 'modify'];
+    sections.forEach(id => document.getElementById(id).style.display = 'none');
+    document.getElementById(serviceId).style.display = 'block';
+    document.getElementById('learnMoreSection').style.display = 'block';
+    document.getElementById('learnMoreSection').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  // Alternate videos every 10 seconds
+  const video1 = document.getElementById("video1");
+  const video2 = document.getElementById("video2");
+  let showingFirst = true;
+
+  setInterval(() => {
+    if (showingFirst) {
+      video1.pause();
+      video1.style.display = "none";
+      video2.style.display = "block";
+      video2.play();
+    } else {
+      video2.pause();
+      video2.style.display = "none";
+      video1.style.display = "block";
+      video1.play();
+    }
+    showingFirst = !showingFirst;
+  }, 10000); // 10 seconds
+
+
     document.getElementById('bookingForm').addEventListener('submit', function(e) {
       e.preventDefault();
       const name = document.getElementById('name').value;
@@ -265,6 +393,21 @@
       document.getElementById('learnMoreSection').style.display = 'block';
       document.getElementById('learnMoreSection').scrollIntoView({ behavior: 'smooth' });
     }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Image slider
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slider img');
+    setInterval(() => {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }, 3000);
+
+    
   </script>
 </body>
 </html>
